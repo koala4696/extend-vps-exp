@@ -38,6 +38,7 @@ try {
     const body = await page.$eval('img[src^="data:"]', img => img.src)
     const code = await fetch('https://captcha-120546510085.asia-northeast1.run.app', { method: 'POST', body }).then(r => r.text())
     await page.locator('[placeholder="上の画像の数字を入力"]').fill(code)
+    await page.locator('text=私がボットではないことを確認します。').click()
     await page.locator('text=無料VPSの利用を継続する').click()
 } catch (e) {
     console.error(e)
